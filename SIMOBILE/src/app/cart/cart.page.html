@@ -29,7 +29,9 @@
 
   <div *ngIf="cartItems.length > 0" class="ion-padding-top">
     <h2>Total Belanja: Rp {{getTotal()}}</h2>
-    <ion-button expand="block" (click)="konfirmasiTransaksi()">Konfirmasi Transaksi</ion-button>
+    <ion-button id="btn-konfirmasi" expand="block" (click)="konfirmasiTransaksi()">Konfirmasi Transaksi</ion-button>
+    <ion-alert trigger="btn-konfirmasi" header="Sukses" message="Transaksi berhasil dikonfirmasi!"
+      [buttons]="alertButtons"></ion-alert>
   </div>
 
   <ion-text *ngIf="cartItems.length === 0" class="ion-text-center" color="medium">

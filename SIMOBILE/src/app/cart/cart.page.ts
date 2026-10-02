@@ -9,6 +9,7 @@ import { TransaksiService, Transaksi } from '../services/transaksi';
   standalone: false,
 })
 export class CartPage implements OnInit {
+  public alertButtons = ['OK'];
 
   constructor(
     private cartService: CartService,
@@ -28,7 +29,6 @@ export class CartPage implements OnInit {
 
   konfirmasiTransaksi() {
     if (this.cartItems.length === 0) {
-      alert("Keranjang kosong!");
       return;
     }
 
@@ -61,8 +61,6 @@ export class CartPage implements OnInit {
 
     // Clear cart
     this.cartService.clearCart();
-
-    alert("Transaksi berhasil dikonfirmasi!");
   }
 
 }

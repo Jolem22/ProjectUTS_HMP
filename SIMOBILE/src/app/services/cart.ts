@@ -32,7 +32,6 @@ export class CartService {
         existingItem.quantity += 1;
         return true;
       } else {
-        alert('Stok tidak mencukupi!');
         return false;
       }
     } else {

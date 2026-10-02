@@ -11,6 +11,9 @@ import { CartService } from '../services/cart';
 })
 export class ProdukDetailPage implements OnInit {
   produk: Produk | undefined;
+  alertMessage = '';
+  alertButtons = ['OK'];
+  isAlertOpen = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -29,8 +32,11 @@ export class ProdukDetailPage implements OnInit {
     if (produk.stok > 0) {
       const added = this.cartService.addToCart(produk);
       if (added) {
-        alert(`Produk ${produk.nama} ditambahkan ke keranjang!`);
+        this.alertMessage = `Produk ${produk.nama} ditambahkan ke keranjang!`;
+      } else {
+        this.alertMessage = 'Stok tidak mencukupi!';
       }
+      this.isAlertOpen = true;
     }
   }
 }
