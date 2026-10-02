@@ -21,7 +21,7 @@
 
   <ion-list>
     <ion-item
-      *ngFor="let p of filteredProduks"
+      *ngFor="let p of filteredProduks()"
       [routerLink]="['/produk-detail', p.id]"
     >
       <ion-avatar slot="start">

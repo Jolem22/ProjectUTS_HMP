@@ -17,7 +17,7 @@ export class ProdukPage implements OnInit {
     this.produks = this.produkService.getProduks();
   }
 
-  get filteredProduks() {
+  filteredProduks() {
     if (!this.searchQuery) {
       return this.produks;
     }
