@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   standalone: false,
 })
 export class DashboardPage implements OnInit {
+  jenistampilan = 'transaksi';
 
   constructor() { }
 

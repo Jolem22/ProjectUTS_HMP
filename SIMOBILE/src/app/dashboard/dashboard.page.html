@@ -3,9 +3,7 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>
-      Dashboard
-    </ion-title>
+    <ion-title> Dashboard </ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -15,4 +13,356 @@
       <ion-title size="large">Dashboard</ion-title>
     </ion-toolbar>
   </ion-header>
+
+  <ion-segment [(ngModel)]="jenistampilan">
+    <ion-segment-button value="transaksi">
+      <ion-label>Transaksi</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="jumlah produk">
+      <ion-label>Jumlah Produk</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="Laporan">
+      <ion-label>Laporan</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <!-- Jumlah produk & jumlah transaksi -->
+  
+  <ion-grid class="grid-ringkasan" *ngIf="jenistampilan === 'transaksi'">
+    <ion-row>
+        <ion-col size="6">
+          <ion-card class="kartu-ringkasan">
+            <ion-card-header> 
+              <ion-card-title>
+                <ion-icon name="receipt-outline"></ion-icon> Transaksi Hari Ini
+              </ion-card-title>
+              <ion-card-subtitle>Tanggal hari ini</ion-card-subtitle>
+            </ion-card-header>
+            <ion-card-content>              
+              <ion-accordion-group expand="inset">
+                <ion-accordion value="1">
+                  <ion-item slot="header" color="light">
+                    <ion-label>Transaksi 1</ion-label>
+                  </ion-item>
+                  <div class="ion-padding" slot="content">
+                    <ion-item lines="none">
+                      <ion-label>Barang 1</ion-label>
+                      <ion-text slot="end">Jumlah Barang 1</ion-text>
+                    </ion-item>
+                    <ion-item lines="none">
+                      <ion-label>Barang 2</ion-label>
+                      <ion-text slot="end">Jumlah Barang 2</ion-text>
+                    </ion-item>
+                    <ion-item lines="none">
+                      <ion-label>Barang 3</ion-label>
+                      <ion-text slot="end">Jumlah Barang 3</ion-text>
+                    </ion-item>
+                    <ion-item lines="none">
+                      <ion-label>Barang 4</ion-label>
+                      <ion-text slot="end">Jumlah Barang 4</ion-text>
+                    </ion-item>
+
+                  </div>
+                </ion-accordion>
+
+                <ion-accordion value="2">
+                  <ion-item slot="header" color="light">
+                    <ion-label>Transaksi 2</ion-label>
+                  </ion-item>
+                  <div class="ion-padding" slot="content">
+                    <ion-item lines="none">
+                      <ion-label>Barang 1</ion-label>
+                      <ion-text slot="end">Jumlah Barang 1</ion-text>
+                    </ion-item>
+                    <ion-item lines="none">
+                      <ion-label>Barang 2</ion-label>
+                      <ion-text slot="end">Jumlah Barang 2</ion-text>
+                    </ion-item>
+                    <ion-item lines="none">
+                      <ion-label>Barang 3</ion-label>
+                      <ion-text slot="end">Jumlah Barang 3</ion-text>
+                    </ion-item>
+                    <ion-item lines="none">
+                      <ion-label>Barang 4</ion-label>
+                      <ion-text slot="end">Jumlah Barang 4</ion-text>
+                    </ion-item>
+
+                  </div>
+                </ion-accordion>
+
+                <ion-accordion value="3">
+                  <ion-item slot="header" color="light">
+                    <ion-label>Transaksi 3</ion-label>
+                  </ion-item>
+                  <div class="ion-padding" slot="content">
+                    <ion-item lines="none">
+                      <ion-label>Barang 1</ion-label>
+                      <ion-text slot="end">Jumlah Barang 1</ion-text>
+                    </ion-item>
+                    <ion-item lines="none">
+                      <ion-label>Barang 2</ion-label>
+                      <ion-text slot="end">Jumlah Barang 2</ion-text>
+                    </ion-item>
+                    <ion-item lines="none">
+                      <ion-label>Barang 3</ion-label>
+                      <ion-text slot="end">Jumlah Barang 3</ion-text>
+                    </ion-item>
+                    <ion-item lines="none">
+                      <ion-label>Barang 4</ion-label>
+                      <ion-text slot="end">Jumlah Barang 4</ion-text>
+                    </ion-item>
+
+                  </div>
+                </ion-accordion>
+
+                <ion-accordion value="4">
+                  <ion-item slot="header" color="light">
+                    <ion-label>Transaksi 4</ion-label>
+                  </ion-item>
+                  <div class="ion-padding" slot="content">
+                    <ion-item lines="none">
+                      <ion-label>Barang 1</ion-label>
+                      <ion-text slot="end">Jumlah Barang 1</ion-text>
+                    </ion-item>
+                    <ion-item lines="none">
+                      <ion-label>Barang 2</ion-label>
+                      <ion-text slot="end">Jumlah Barang 2</ion-text>
+                    </ion-item>
+                    <ion-item lines="none">
+                      <ion-label>Barang 3</ion-label>
+                      <ion-text slot="end">Jumlah Barang 3</ion-text>
+                    </ion-item>
+                    <ion-item lines="none">
+                      <ion-label>Barang 4</ion-label>
+                      <ion-text slot="end">Jumlah Barang 4</ion-text>
+                    </ion-item>
+
+                  </div>
+                </ion-accordion>
+
+                <ion-accordion value="5">
+                  <ion-item slot="header" color="light">
+                    <ion-label>Transaksi 5</ion-label>
+                  </ion-item>
+                  <div class="ion-padding" slot="content">
+                    <ion-item lines="none">
+                      <ion-label>Barang 1</ion-label>
+                      <ion-text slot="end">Jumlah Barang 1</ion-text>
+                    </ion-item>
+                    <ion-item lines="none">
+                      <ion-label>Barang 2</ion-label>
+                      <ion-text slot="end">Jumlah Barang 2</ion-text>
+                    </ion-item>
+                    <ion-item lines="none">
+                      <ion-label>Barang 3</ion-label>
+                      <ion-text slot="end">Jumlah Barang 3</ion-text>
+                    </ion-item>
+                    <ion-item lines="none">
+                      <ion-label>Barang 4</ion-label>
+                      <ion-text slot="end">Jumlah Barang 4</ion-text>
+                    </ion-item>
+
+                  </div>
+                </ion-accordion>
+
+                <ion-accordion value="6">
+                  <ion-item slot="header" color="light">
+                    <ion-label>Transaksi 6</ion-label>
+                  </ion-item>
+                  <div class="ion-padding" slot="content">
+                    <ion-item lines="none">
+                      <ion-label>Barang 1</ion-label>
+                      <ion-text slot="end">Jumlah Barang 1</ion-text>
+                    </ion-item>
+                    <ion-item lines="none">
+                      <ion-label>Barang 2</ion-label>
+                      <ion-text slot="end">Jumlah Barang 2</ion-text>
+                    </ion-item>
+                    <ion-item lines="none">
+                      <ion-label>Barang 3</ion-label>
+                      <ion-text slot="end">Jumlah Barang 3</ion-text>
+                    </ion-item>
+                    <ion-item lines="none">
+                      <ion-label>Barang 4</ion-label>
+                      <ion-text slot="end">Jumlah Barang 4</ion-text>
+                    </ion-item>
+
+                  </div>
+                </ion-accordion>
+
+                <ion-accordion value="7">
+                  <ion-item slot="header" color="light">
+                    <ion-label>Transaksi 7</ion-label>
+                  </ion-item>
+                  <div class="ion-padding" slot="content">
+                    <ion-item lines="none">
+                      <ion-label>Barang 1</ion-label>
+                      <ion-text slot="end">Jumlah Barang 1</ion-text>
+                    </ion-item>
+                    <ion-item lines="none">
+                      <ion-label>Barang 2</ion-label>
+                      <ion-text slot="end">Jumlah Barang 2</ion-text>
+                    </ion-item>
+                    <ion-item lines="none">
+                      <ion-label>Barang 3</ion-label>
+                      <ion-text slot="end">Jumlah Barang 3</ion-text>
+                    </ion-item>
+                    <ion-item lines="none">
+                      <ion-label>Barang 4</ion-label>
+                      <ion-text slot="end">Jumlah Barang 4</ion-text>
+                    </ion-item>
+
+                  </div>
+                </ion-accordion>
+
+                <ion-accordion value="8">
+                  <ion-item slot="header" color="light">
+                    <ion-label>Transaksi 8</ion-label>
+                  </ion-item>
+                  <div class="ion-padding" slot="content">
+                    <ion-item lines="none">
+                      <ion-label>Barang 1</ion-label>
+                      <ion-text slot="end">Jumlah Barang 1</ion-text>
+                    </ion-item>
+                    <ion-item lines="none">
+                      <ion-label>Barang 2</ion-label>
+                      <ion-text slot="end">Jumlah Barang 2</ion-text>
+                    </ion-item>
+                    <ion-item lines="none">
+                      <ion-label>Barang 3</ion-label>
+                      <ion-text slot="end">Jumlah Barang 3</ion-text>
+                    </ion-item>
+                    <ion-item lines="none">
+                      <ion-label>Barang 4</ion-label>
+                      <ion-text slot="end">Jumlah Barang 4</ion-text>
+                    </ion-item>
+
+                  </div>
+                </ion-accordion>
+
+                <ion-accordion value="9">
+                  <ion-item slot="header" color="light">
+                    <ion-label>Transaksi 9</ion-label>
+                  </ion-item>
+                  <div class="ion-padding" slot="content">
+                    <ion-item lines="none">
+                      <ion-label>Barang 1</ion-label>
+                      <ion-text slot="end">Jumlah Barang 1</ion-text>
+                    </ion-item>
+                    <ion-item lines="none">
+                      <ion-label>Barang 2</ion-label>
+                      <ion-text slot="end">Jumlah Barang 2</ion-text>
+                    </ion-item>
+                    <ion-item lines="none">
+                      <ion-label>Barang 3</ion-label>
+                      <ion-text slot="end">Jumlah Barang 3</ion-text>
+                    </ion-item>
+                    <ion-item lines="none">
+                      <ion-label>Barang 4</ion-label>
+                      <ion-text slot="end">Jumlah Barang 4</ion-text>
+                    </ion-item>
+
+                  </div>
+                </ion-accordion>
+
+                <ion-accordion value="10">
+                  <ion-item slot="header" color="light">
+                    <ion-label>Transaksi 10</ion-label>
+                  </ion-item>
+                  <div class="ion-padding" slot="content">
+                    <ion-item lines="none">
+                      <ion-label>Barang 1</ion-label>
+                      <ion-text slot="end">Jumlah Barang 1</ion-text>
+                    </ion-item>
+                    <ion-item lines="none">
+                      <ion-label>Barang 2</ion-label>
+                      <ion-text slot="end">Jumlah Barang 2</ion-text>
+                    </ion-item>
+                    <ion-item lines="none">
+                      <ion-label>Barang 3</ion-label>
+                      <ion-text slot="end">Jumlah Barang 3</ion-text>
+                    </ion-item>
+                    <ion-item lines="none">
+                      <ion-label>Barang 4</ion-label>
+                      <ion-text slot="end">Jumlah Barang 4</ion-text>
+                    </ion-item>
+
+                  </div>
+                </ion-accordion>
+              </ion-accordion-group>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+
+        <ion-col size="6">
+          <ion-card class="kartu-ringkasan">
+            <ion-card-header>   
+              <ion-card-title>
+                <ion-icon name="cube-outline"></ion-icon> Jumlah Produk
+              </ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+
+              <div>
+                <ion-item lines="none">
+                  <ion-label>Barang 1</ion-label>
+                  <ion-text slot="end">Total Barang 1</ion-text>
+                </ion-item>
+
+                <ion-item lines="none">
+                  <ion-label>Barang 2</ion-label>
+                  <ion-text slot="end">Total Barang 2</ion-text>
+                </ion-item>
+                
+                <ion-item lines="none">
+                  <ion-label>Barang 3</ion-label>
+                  <ion-text slot="end">Total Barang 3</ion-text>
+                </ion-item>
+                
+                <ion-item lines="none">
+                  <ion-label>Barang 4</ion-label>
+                  <ion-text slot="end">Total Barang 4</ion-text>
+                </ion-item>
+                
+                <ion-item lines="none">
+                  <ion-label>Barang 5</ion-label>
+                  <ion-text slot="end">Total Barang 5</ion-text>
+                </ion-item>
+                
+                <ion-item lines="none">
+                  <ion-label>Barang 6</ion-label>
+                  <ion-text slot="end">Total Barang 6</ion-text>
+                </ion-item>
+                
+                <ion-item lines="none">
+                  <ion-label>Barang 7</ion-label>
+                  <ion-text slot="end">Total Barang 7</ion-text>
+                </ion-item>
+                
+                <ion-item lines="none">
+                  <ion-label>Barang 8</ion-label>
+                  <ion-text slot="end">Total Barang 8</ion-text>
+                </ion-item>
+                
+                <ion-item lines="none">
+                  <ion-label>Barang 9</ion-label>
+                  <ion-text slot="end">Total Barang 9</ion-text>
+                </ion-item>
+                
+                <ion-item lines="none">
+                  <ion-label>Barang 10</ion-label>
+                  <ion-text slot="end">Total Barang 10</ion-text>
+                </ion-item>
+
+              </div>
+
+              <div class="Best-Seller">
+
+              </div>
+
+            </ion-card-content>
+          </ion-card>
+        </ion-col> 
+      </ion-row>
+  </ion-grid>
 </ion-content>
