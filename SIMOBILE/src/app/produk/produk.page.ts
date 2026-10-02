@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ProdukService, Produk } from '../services/produk';
 
 @Component({
   selector: 'app-produk',
@@ -7,10 +8,21 @@ import { Component, OnInit } from '@angular/core';
   standalone: false,
 })
 export class ProdukPage implements OnInit {
+  produks: Produk[] = [];
+  searchQuery: string = '';
 
-  constructor() { }
+  constructor(private produkService: ProdukService) {}
 
   ngOnInit() {
+    this.produks = this.produkService.getProduks();
   }
 
+  filteredProduks() {
+    if (!this.searchQuery) {
+      return this.produks;
+    }
+    return this.produks.filter((p) =>
+      p.nama.toLowerCase().includes(this.searchQuery.toLowerCase()),
+    );
+  }
 }

@@ -13,4 +13,27 @@
       <ion-title size="large">Produk</ion-title>
     </ion-toolbar>
   </ion-header>
+
+  <ion-searchbar
+    [(ngModel)]="searchQuery"
+    placeholder="Cari nama barang..."
+  ></ion-searchbar>
+
+  <ion-list>
+    <ion-item
+      *ngFor="let p of filteredProduks()"
+      [routerLink]="['/produk-detail', p.id]"
+    >
+      <ion-avatar slot="start">
+        <ion-img [src]="p.gambar"></ion-img>
+      </ion-avatar>
+      <ion-label>
+        <h2>{{ p.nama }}</h2>
+        <p [ngStyle]="{'color': p.stok === 0 ? 'red' : 'inherit'}">
+          Stok: {{ p.stok }}
+        </p>
+        <p>Harga Jual: Rp {{ p.harga_jual }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
 </ion-content>
