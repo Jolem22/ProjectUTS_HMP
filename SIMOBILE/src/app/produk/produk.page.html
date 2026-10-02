@@ -19,16 +19,10 @@
     </ion-toolbar>
   </ion-header>
 
-  <ion-searchbar
-    [(ngModel)]="searchQuery"
-    placeholder="Cari nama barang..."
-  ></ion-searchbar>
+  <ion-searchbar [(ngModel)]="searchQuery" placeholder="Cari nama barang..."></ion-searchbar>
 
   <ion-list>
-    <ion-item
-      *ngFor="let p of filteredProduks"
-      [routerLink]="['/produk-detail', p.id]"
-    >
+    <ion-item *ngFor="let p of filteredProduks" [routerLink]="['/produk-detail', p.id]">
       <ion-avatar slot="start">
         <ion-img [src]="p.gambar"></ion-img>
       </ion-avatar>

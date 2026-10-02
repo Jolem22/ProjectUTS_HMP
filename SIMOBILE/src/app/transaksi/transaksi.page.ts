@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
-export const riwayatTransaksi: any[] = [];
+import { TransaksiService, Transaksi } from '../services/transaksi';
 
 @Component({
   selector: 'app-transaksi',
@@ -9,11 +8,16 @@ export const riwayatTransaksi: any[] = [];
   standalone: false,
 })
 export class TransaksiPage implements OnInit {
-  riwayat = riwayatTransaksi;
 
-  constructor() { }
+  constructor(
+    private transaksiService: TransaksiService
+  ) { }
 
   ngOnInit() {
+  }
+
+  get riwayat(): Transaksi[] {
+    return this.transaksiService.getRiwayat();
   }
 
 }

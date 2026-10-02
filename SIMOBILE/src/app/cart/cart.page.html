@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/dashboard"></ion-back-button>
+      <ion-back-button defaultHref="/produk"></ion-back-button>
     </ion-buttons>
     <ion-title>Keranjang</ion-title>
   </ion-toolbar>
@@ -17,16 +17,16 @@
   <ion-list *ngIf="cartItems.length > 0">
     <ion-item *ngFor="let item of cartItems">
       <ion-label>
-        <h2>{{item.productName}}</h2>
-        <p>Harga: Rp {{item.productPrice}}</p>
+        <h2>{{item.produk.nama}}</h2>
+        <p>Harga: Rp {{item.produk.harga_jual}}</p>
         <p>Qty: {{item.quantity}}</p>
       </ion-label>
       <ion-text slot="end">
-        Rp {{item.productPrice * item.quantity}}
+        Rp {{item.produk.harga_jual * item.quantity}}
       </ion-text>
     </ion-item>
   </ion-list>
-  
+
   <div *ngIf="cartItems.length > 0" class="ion-padding-top">
     <h2>Total Belanja: Rp {{getTotal()}}</h2>
     <ion-button expand="block" (click)="konfirmasiTransaksi()">Konfirmasi Transaksi</ion-button>

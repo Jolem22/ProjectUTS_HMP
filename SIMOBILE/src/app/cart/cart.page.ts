@@ -1,11 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { riwayatTransaksi } from '../transaksi/transaksi.page';
-
-interface CartItem {
-  productName: string;
-  productPrice: number;
-  quantity: number;
-}
+import { CartService, CartItem } from '../services/cart'; // Trigger rebuild
+import { TransaksiService, Transaksi } from '../services/transaksi';
 
 @Component({
   selector: 'app-cart',
@@ -15,50 +10,58 @@ interface CartItem {
 })
 export class CartPage implements OnInit {
 
-  cartItems: CartItem[] = [
-    {
-      productName: 'Iphone 14',
-      productPrice: 14000000,
-      quantity: 1
-    },
-    {
-      productName: 'MacBook Pro',
-      productPrice: 20000000,
-      quantity: 2
-    }
-  ];
-
-  constructor() { }
+  constructor(
+    private cartService: CartService,
+    private transaksiService: TransaksiService
+  ) { }
 
   ngOnInit() {
   }
 
+  get cartItems(): CartItem[] {
+    return this.cartService.getCartItems();
+  }
+
   getTotal(): number {
-    let total = 0;
-    for(let item of this.cartItems) {
-      total += item.productPrice * item.quantity;
-    }
-    return total;
+    return this.cartService.getTotal();
   }
 
   konfirmasiTransaksi() {
-    if(this.cartItems.length === 0) {
+    if (this.cartItems.length === 0) {
       alert("Keranjang kosong!");
       return;
     }
 
     const currentTotal = this.getTotal();
     const currentDate = new Date();
-    
-    // Add to history
-    riwayatTransaksi.push({
+
+    const currentCart = this.cartItems;
+    const itemsCopy: CartItem[] = [];
+    for (let i = 0; i < currentCart.length; i++) {
+      itemsCopy.push(currentCart[i]);
+    }
+
+    const newTransaksi: Transaksi = {
+      id: 'TRX' + new Date().getTime(),
       tanggal: currentDate.toLocaleString(),
       total: currentTotal,
-      items: [...this.cartItems]
-    });
+      items: itemsCopy
+    };
+
+    // Kurangi stok produk
+    for (let item of this.cartItems) {
+      item.produk.stok -= item.quantity;
+      if (item.produk.stok < 0) {
+        item.produk.stok = 0; // prevent negative stock just in case
+      }
+    }
+
+    // Add to history
+    this.transaksiService.addTransaksi(newTransaksi);
 
     // Clear cart
-    this.cartItems = [];
+    this.cartService.clearCart();
+
     alert("Transaksi berhasil dikonfirmasi!");
   }
 
