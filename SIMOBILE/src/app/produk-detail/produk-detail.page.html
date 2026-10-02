@@ -1,0 +1,40 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/produk"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Detail Produk</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div *ngIf="produk">
+    <ion-card>
+      <ion-img
+        [src]="produk.gambar || 'https://via.placeholder.com/400?text=No+Image'"
+      ></ion-img>
+      <ion-card-header>
+        <ion-card-title>{{ produk.nama }}</ion-card-title>
+        <ion-card-subtitle>{{ produk.kategori }}</ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-card-content>
+        <p [ngStyle]="{'color': produk.stok === 0 ? 'red' : 'inherit'}"><strong>Stok:</strong> {{ produk.stok }}</p>
+        <p><strong>Harga Beli:</strong> Rp {{ produk.harga_beli }}</p>
+        <p><strong>Harga Jual:</strong> Rp {{ produk.harga_jual }}</p>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-button
+      expand="block"
+      [disabled]="produk.stok === 0"
+      (click)="tambahKeKeranjang(produk)"
+    >
+      Tambah ke Keranjang
+    </ion-button>
+  </div>
+
+  <div *ngIf="!produk">
+    <p>Produk tidak ditemukan.</p>
+  </div>
+</ion-content>
