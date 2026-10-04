@@ -19,21 +19,35 @@
     placeholder="Cari nama barang..."
   ></ion-searchbar>
 
-  <ion-list>
-    <ion-item
-      *ngFor="let p of filteredProduks()"
-      [routerLink]="['/produk-detail', p.id]"
-    >
-      <ion-avatar slot="start">
-        <ion-img [src]="p.gambar"></ion-img>
-      </ion-avatar>
-      <ion-label>
-        <h2>{{ p.nama }}</h2>
-        <p [ngStyle]="{'color': p.stok === 0 ? 'red' : 'inherit'}">
-          Stok: {{ p.stok }}
-        </p>
-        <p>Harga Jual: Rp {{ p.harga_jual }}</p>
-      </ion-label>
-    </ion-item>
-  </ion-list>
+  <ion-item>
+    <ion-button routerLink="/form-produk">
+      <ion-icon name="add-outline" slot="start"></ion-icon>
+      Tambah Produk
+    </ion-button>
+  </ion-item>
+
+  <ion-grid>
+    <ion-row *ngFor="let p of filteredProduks()">
+      <ion-col size="11">
+        <ion-item [routerLink]="['/produk-detail', p.id]">
+          <ion-avatar slot="start">
+            <ion-img [src]="p.gambar ? p.gambar : gambarDefault"></ion-img>
+          </ion-avatar>
+          <ion-label>
+            <h2>{{ p.nama }}</h2>
+            <p [ngStyle]="{'color': p.stok === 0 ? 'red' : 'inherit'}">
+              Stok: {{ p.stok }}
+            </p>
+            <p>Harga Jual: Rp {{ p.harga_jual }}</p>
+          </ion-label>
+        </ion-item>
+      </ion-col>
+
+      <ion-col size="1">
+        <ion-button fill="clear" routerLink="/form-produk/{{p.id}}">
+          <ion-icon name="create-outline" slot="icon-only"></ion-icon> Edit
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

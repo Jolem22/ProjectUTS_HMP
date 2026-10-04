@@ -51,6 +51,20 @@ const routes: Routes = [
         (m) => m.ProdukDetailPageModule,
       ),
   },
+  {
+    path: 'form-produk',
+    loadChildren: () =>
+      import('./produk/form-produk/form-produk.module').then(
+        (m) => m.FormProdukPageModule,
+      ),
+  },
+  {
+    path: 'form-produk/:id',
+    loadChildren: () =>
+      import('./produk/form-produk/form-produk.module').then(
+        (m) => m.FormProdukPageModule,
+      ),
+  },
 ];
 @NgModule({
   imports: [

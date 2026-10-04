@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { ProdukService, Produk } from '../services/produk';
 
 interface ItemTransaksi {
-  nama: string;
+  produkId: string;  
   jumlah: number;
-  harga: number;
 }
 
 interface Transaksi {
@@ -23,59 +23,96 @@ interface ProdukTerlaris {
   styleUrls: ['./dashboard.page.scss'],
   standalone: false,
 })
+
 export class DashboardPage implements OnInit {
-  // Data dummy (pola array of object seperti `books` di Week 4)
   transaksiList: Transaksi[] = [
     { id: 1, nomor: '#001', items: [
-        { nama: 'Indomie Goreng', jumlah: 5, harga: 3500 },
-        { nama: 'Teh Botol 450ml', jumlah: 2, harga: 5000 } ] },
+        { produkId: 'p5',  jumlah: 10 },
+        { produkId: 'p6',  jumlah: 2 },
+        { produkId: 'p9',  jumlah: 1 } ] },
     { id: 2, nomor: '#002', items: [
-        { nama: 'Beras Premium 5kg', jumlah: 1, harga: 68000 },
-        { nama: 'Minyak Goreng 1L', jumlah: 1, harga: 17000 },
-        { nama: 'Telur Ayam 1kg', jumlah: 1, harga: 30000 } ] },
+        { produkId: 'p1',  jumlah: 1 },
+        { produkId: 'p2',  jumlah: 2 },
+        { produkId: 'p3',  jumlah: 3 },
+        { produkId: 'p4',  jumlah: 2 } ] },
     { id: 3, nomor: '#003', items: [
-        { nama: 'Air Mineral 600ml', jumlah: 6, harga: 3000 },
-        { nama: 'Sabun Mandi', jumlah: 2, harga: 4000 } ] },
+        { produkId: 'p5',  jumlah: 15 },
+        { produkId: 'p8',  jumlah: 4 },
+        { produkId: 'p10', jumlah: 1 } ] },
     { id: 4, nomor: '#004', items: [
-        { nama: 'Deterjen 800g', jumlah: 2, harga: 16500 },
-        { nama: 'Biskuit Kelapa', jumlah: 3, harga: 9000 },
-        { nama: 'Indomie Goreng', jumlah: 4, harga: 3500 },
-        { nama: 'Teh Botol 450ml', jumlah: 1, harga: 5000 } ] },
+        { produkId: 'p7',  jumlah: 3 },
+        { produkId: 'p6',  jumlah: 1 },
+        { produkId: 'p3',  jumlah: 2 },
+        { produkId: 'p9',  jumlah: 2 } ] },
     { id: 5, nomor: '#005', items: [
-        { nama: 'Gula Pasir 1kg', jumlah: 2, harga: 18000 } ] },
+        { produkId: 'p4',  jumlah: 1 },
+        { produkId: 'p5',  jumlah: 5 },
+        { produkId: 'p8',  jumlah: 2 },
+        { produkId: 'p1',  jumlah: 1 },
+        { produkId: 'p2',  jumlah: 1 } ] },
+    { id: 6, nomor: '#006', items: [
+        { produkId: 'p5',  jumlah: 10 },
+        { produkId: 'p1',  jumlah: 1 },
+        { produkId: 'p3',  jumlah: 1 },
+        { produkId: 'p7',  jumlah: 5 },
+        { produkId: 'p4',  jumlah: 3 } ] },
   ];
 
-  // Data dummy produk terlaris (sudah urut dari yang paling banyak terjual)
-  produkTerlaris: ProdukTerlaris[] = [
-    { nama: 'Indomie Goreng',    total: 120 },
-    { nama: 'Air Mineral 600ml', total: 95 },
-    { nama: 'Teh Botol 450ml',   total: 80 },
-    { nama: 'Minyak Goreng 1L',  total: 64 },
-    { nama: 'Gula Pasir 1kg',    total: 52 },
-    { nama: 'Telur Ayam 1kg',    total: 47 },
-    { nama: 'Beras Premium 5kg', total: 40 },
-    { nama: 'Sabun Mandi',       total: 35 },
-    { nama: 'Deterjen 800g',     total: 28 },
-    { nama: 'Biskuit Kelapa',    total: 21 },
-  ];
+  produkTerlaris: ProdukTerlaris[] = [];
 
-  constructor() { }
+  constructor(private produkService: ProdukService) { }
 
   ngOnInit() {
+    this.hitungProdukTerlaris();
   }
 
-  // Dipanggil dari HTML lewat interpolation (materi Week 3: method di interpolation)
+  // Cari nama produk dari service berdasarkan id
+  getNama(id: string): string {
+    const p = this.produkService.getProdukById(id);
+    if (p) {
+      return p.nama;
+    }
+    return '-';
+  }
+
+  // Cari harga jual produk dari service berdasarkan id
+  getHarga(id: string): number {
+    const p = this.produkService.getProdukById(id);
+    if (p) {
+      return p.harga_jual;
+    }
+    return 0;
+  }
+
   hitungTotal(t: Transaksi): number {
     let total = 0;
     for (const item of t.items) {
-      total += item.jumlah * item.harga;
+      total += item.jumlah * this.getHarga(item.produkId);
     }
     return total;
+  }
+
+  // Jumlahkan penjualan tiap produk dari semua transaksi, lalu urutkan dari yang terbanyak
+  hitungProdukTerlaris() {
+    const hasil: ProdukTerlaris[] = [];
+
+    for (const p of this.produkService.getProduks()) {
+      let total = 0;
+      for (const t of this.transaksiList) {
+        for (const item of t.items) {
+          if (item.produkId === p.id) {
+            total += item.jumlah;
+          }
+        }
+      }
+      hasil.push({ nama: p.nama, total: total });
+    }
+
+    hasil.sort((a, b) => b.total - a.total);
+    this.produkTerlaris = hasil;
   }
 
   rupiah(angka: number): string {
     return 'Rp ' + angka.toLocaleString('id-ID');
   }
-
-
 }
