@@ -124,4 +124,51 @@ export class ProdukService {
   getProdukById(id: string) {
     return this.produks.find((p) => p.id === id);
   }
+
+
+  private nextId: number = 11; //karena p1 - p10 sudah dipakai
+
+  tambahProduk(
+    p_nama: string,
+    p_kategori: string,
+    p_harga_beli: number,
+    p_harga_jual: number,
+    p_stok: number,
+    p_gambar: string
+  ) {
+    this.produks.push({
+      id: 'p' + this.nextId,
+      nama: p_nama,
+      kategori: p_kategori,
+      harga_beli: p_harga_beli,
+      harga_jual: p_harga_jual,
+      stok: p_stok,
+      gambar: p_gambar,
+    });
+    this.nextId++;
+  }
+
+  updateProduk(
+    p_id: string,
+    p_nama: string,
+    p_kategori: string,
+    p_harga_beli: number,
+    p_harga_jual: number,
+    p_stok: number,
+    p_gambar: string
+  ) {
+    for (let i = 0; i < this.produks.length; i++) {
+      if (this.produks[i].id === p_id) {
+        this.produks[i] = {
+          id: p_id,
+          nama: p_nama,
+          kategori: p_kategori,
+          harga_beli: p_harga_beli,
+          harga_jual: p_harga_jual,
+          stok: p_stok,
+          gambar: p_gambar,
+        };
+      }
+    }
+  }
 }

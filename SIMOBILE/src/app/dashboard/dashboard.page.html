@@ -28,7 +28,7 @@
               <ion-card-subtitle>Tanggal hari ini</ion-card-subtitle>
             </ion-card-header>
             <ion-card-content>              
-             <ion-accordion-group expand="inset">
+              <ion-accordion-group expand="inset">
                 <ion-accordion *ngFor="let t of transaksiList" [value]="t.id">
 
                   <ion-item slot="header" color="light">
@@ -37,8 +37,8 @@
 
                   <div class="ion-padding" slot="content">
                     <ion-item lines="none" *ngFor="let item of t.items">
-                      <ion-label>{{item.nama}}</ion-label>
-                      <ion-text slot="end">{{item.jumlah}}x {{rupiah(item.harga)}}</ion-text>
+                      <ion-label>{{getNama(item.produkId)}}</ion-label>
+                      <ion-text slot="end">{{item.jumlah}} x {{rupiah(getHarga(item.produkId))}}</ion-text>
                     </ion-item>
 
                     <hr>
@@ -48,7 +48,6 @@
                       <ion-text slot="end"><b>{{rupiah(hitungTotal(t))}}</b></ion-text>
                     </ion-item>
                   </div>
-
                 </ion-accordion>
               </ion-accordion-group>
             </ion-card-content>
@@ -70,7 +69,7 @@
                   <ion-text slot="end">{{p.total}} terjual</ion-text>
                 </ion-item>
               </div>
-
+              
             </ion-card-content>
           </ion-card>
         </ion-col> 

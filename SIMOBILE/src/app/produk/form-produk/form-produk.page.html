@@ -1,0 +1,82 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button [defaultHref]="halamanProduk"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{modeEdit ? 'Edit Produk' : 'Tambah Produk'}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-list lines="full">
+
+    <ion-item>
+      <ion-input label="Nama Barang" labelPlacement="stacked"
+        placeholder="Contoh: Indomie Goreng" [(ngModel)]="new_nama">
+      </ion-input>
+    </ion-item>
+    <ion-text color="danger" *ngIf="errNama() != ''">
+      <p class="pesan-error">{{errNama()}}</p>
+    </ion-text>
+
+    <ion-item>
+      <ion-select label="Kategori" labelPlacement="stacked"
+        placeholder="Pilih kategori" [(ngModel)]="new_kategori">
+        <ion-select-option *ngFor="let k of daftarKategori" [value]="k">{{k}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-text color="danger" *ngIf="errKategori() != ''">
+      <p class="pesan-error">{{errKategori()}}</p>
+    </ion-text>
+
+    <ion-item>
+      <ion-input type="number" label="Harga Beli (Rp)" labelPlacement="stacked"
+        placeholder="Contoh: 2500" [(ngModel)]="new_harga_beli">
+      </ion-input>
+    </ion-item>
+    <ion-text color="danger" *ngIf="errHargaBeli() != ''">
+      <p class="pesan-error">{{errHargaBeli()}}</p>
+    </ion-text>
+
+    <ion-item>
+      <ion-input type="number" label="Harga Jual (Rp)" labelPlacement="stacked"
+        placeholder="Contoh: 3000" [(ngModel)]="new_harga_jual">
+      </ion-input>
+    </ion-item>
+    <ion-text color="danger" *ngIf="errHargaJual() != ''">
+      <p class="pesan-error">{{errHargaJual()}}</p>
+    </ion-text>
+
+    <ion-item *ngIf="new_harga_beli > 0 && new_harga_jual > 0">
+      <ion-label>Untung per barang</ion-label>
+      <ion-badge slot="end" [color]="new_harga_jual - new_harga_beli >= 0 ? 'success' : 'danger'">
+        Rp {{new_harga_jual - new_harga_beli}}
+      </ion-badge>
+    </ion-item>
+
+    <ion-item>
+      <ion-input type="number" label="Stok" labelPlacement="stacked"
+        placeholder="Contoh: 50" [(ngModel)]="new_stok">
+      </ion-input>
+    </ion-item>
+    <ion-text color="danger" *ngIf="errStok() != ''">
+      <p class="pesan-error">{{errStok()}}</p>
+    </ion-text>
+
+    <ion-item>
+      <ion-input type="url" label="URL Gambar (opsional)" labelPlacement="stacked"
+        placeholder="https://example.com/barang.jpg" [(ngModel)]="new_gambar">
+      </ion-input>
+    </ion-item>
+
+    <div id="frame">
+      <ion-img class="preview" [src]="new_gambar ? new_gambar : gambarDefault"></ion-img>
+    </div>
+
+  </ion-list>
+
+  <ion-button expand="block" (click)="simpan()">
+    <ion-icon name="save-outline" slot="start"></ion-icon>
+    Simpan
+  </ion-button>
+</ion-content>
