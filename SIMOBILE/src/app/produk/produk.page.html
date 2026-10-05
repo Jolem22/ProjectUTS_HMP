@@ -4,6 +4,11 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>Produk</ion-title>
+    <ion-buttons slot="end">
+      <ion-button routerLink="/cart">
+        <ion-icon name="cart"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -14,10 +19,7 @@
     </ion-toolbar>
   </ion-header>
 
-  <ion-searchbar
-    [(ngModel)]="searchQuery"
-    placeholder="Cari nama barang..."
-  ></ion-searchbar>
+  <ion-searchbar [(ngModel)]="searchQuery" placeholder="Cari nama barang..."></ion-searchbar>
 
   <ion-item>
     <ion-button routerLink="/form-produk">

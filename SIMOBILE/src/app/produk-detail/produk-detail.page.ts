@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProdukService, Produk } from '../services/produk';
+import { CartService } from '../services/cart';
 
 @Component({
   selector: 'app-produk-detail',
@@ -10,11 +11,15 @@ import { ProdukService, Produk } from '../services/produk';
 })
 export class ProdukDetailPage implements OnInit {
   produk: Produk | undefined;
+  alertMessage = '';
+  alertButtons = ['OK'];
+  isAlertOpen = false;
 
   constructor(
     private route: ActivatedRoute,
     private produkService: ProdukService,
-  ) {}
+    private cartService: CartService
+  ) { }
 
   ngOnInit() {
     this.route.params.subscribe((params) => {
@@ -25,7 +30,13 @@ export class ProdukDetailPage implements OnInit {
 
   tambahKeKeranjang(produk: Produk) {
     if (produk.stok > 0) {
-      alert(`Produk ${produk.nama} ditambahkan ke keranjang!`);
+      const added = this.cartService.addToCart(produk);
+      if (added) {
+        this.alertMessage = `Produk ${produk.nama} ditambahkan ke keranjang!`;
+      } else {
+        this.alertMessage = 'Stok tidak mencukupi!';
+      }
+      this.isAlertOpen = true;
     }
   }
 }

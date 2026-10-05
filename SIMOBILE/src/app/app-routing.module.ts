@@ -45,12 +45,22 @@ const routes: Routes = [
       import('./logout/logout.module').then((m) => m.LogoutPageModule),
   },
   {
+    path: 'cart',
+    loadChildren: () =>
+      import('./cart/cart.module').then((m) => m.CartPageModule),
+  },
+  {
     path: 'produk-detail/:id',
     loadChildren: () =>
       import('./produk-detail/produk-detail.module').then(
         (m) => m.ProdukDetailPageModule,
       ),
   },
+  {
+    path: 'transaksi-detail/:id',
+    loadChildren: () => import('./transaksi-detail/transaksi-detail.module').then(m => m.TransaksiDetailPageModule)
+  },
+
   {
     path: 'form-produk',
     loadChildren: () =>
@@ -72,4 +82,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

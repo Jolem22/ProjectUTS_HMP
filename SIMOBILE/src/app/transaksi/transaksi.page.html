@@ -13,4 +13,17 @@
       <ion-title size="large">Transaksi</ion-title>
     </ion-toolbar>
   </ion-header>
+
+  <ion-list *ngIf="riwayat.length > 0">
+    <ion-item *ngFor="let trx of riwayat" routerLink="/transaksi-detail/{{trx.id}}">
+      <ion-label>
+        <h2>Transaksi: {{trx.tanggal}}</h2>
+        <p>Total: Rp {{trx.total}}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-text *ngIf="riwayat.length === 0" class="ion-text-center" color="medium">
+    <p>Belum ada riwayat transaksi.</p>
+  </ion-text>
 </ion-content>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TransaksiService, Transaksi } from '../services/transaksi';
 
 @Component({
   selector: 'app-transaksi',
@@ -8,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TransaksiPage implements OnInit {
 
-  constructor() { }
+  constructor(
+    private transaksiService: TransaksiService
+  ) { }
 
   ngOnInit() {
+  }
+
+  get riwayat(): Transaksi[] {
+    return this.transaksiService.getRiwayat();
   }
 
 }

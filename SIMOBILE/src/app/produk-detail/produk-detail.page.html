@@ -26,12 +26,21 @@
     </ion-card>
 
     <ion-button
+      id="btn-tambah"
       expand="block"
       [disabled]="produk.stok === 0"
       (click)="tambahKeKeranjang(produk)"
     >
       Tambah ke Keranjang
     </ion-button>
+
+    <ion-alert
+      [isOpen]="isAlertOpen"
+      (didDismiss)="isAlertOpen = false"
+      header="Keranjang"
+      [message]="alertMessage"
+      [buttons]="alertButtons"
+    ></ion-alert>
   </div>
 
   <div *ngIf="!produk">

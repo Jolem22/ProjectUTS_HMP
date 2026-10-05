@@ -1,0 +1,40 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/produk"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Keranjang</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Keranjang</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-list *ngIf="cartItems.length > 0">
+    <ion-item *ngFor="let item of cartItems">
+      <ion-label>
+        <h2>{{item.produk.nama}}</h2>
+        <p>Harga: Rp {{item.produk.harga_jual}}</p>
+        <p>Qty: {{item.quantity}}</p>
+      </ion-label>
+      <ion-text slot="end">
+        Rp {{item.produk.harga_jual * item.quantity}}
+      </ion-text>
+    </ion-item>
+  </ion-list>
+
+  <div *ngIf="cartItems.length > 0" class="ion-padding-top">
+    <h2>Total Belanja: Rp {{getTotal()}}</h2>
+    <ion-button id="btn-konfirmasi" expand="block" (click)="konfirmasiTransaksi()">Konfirmasi Transaksi</ion-button>
+    <ion-alert trigger="btn-konfirmasi" header="Sukses" message="Transaksi berhasil dikonfirmasi!"
+      [buttons]="alertButtons"></ion-alert>
+  </div>
+
+  <ion-text *ngIf="cartItems.length === 0" class="ion-text-center" color="medium">
+    <p>Keranjang kosong.</p>
+  </ion-text>
+</ion-content>
