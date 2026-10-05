@@ -27,6 +27,10 @@ export class CartPage implements OnInit {
     return this.cartService.getTotal();
   }
 
+  hapusItem(index: number) {
+    this.cartService.removeItem(index);
+  }
+
   konfirmasiTransaksi() {
     if (this.cartItems.length === 0) {
       return;

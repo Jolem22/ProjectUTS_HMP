@@ -7,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
   standalone: false,
 })
 export class PengaturanPage implements OnInit {
+  isDarkMode: boolean = false;
 
   constructor() { }
 
   ngOnInit() {
+    this.isDarkMode = document.body.classList.contains('dark');
   }
 
+  toggleDarkMode() {
+    document.body.classList.toggle('dark', this.isDarkMode);
+  }
 }

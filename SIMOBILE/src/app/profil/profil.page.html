@@ -7,10 +7,26 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" class="ion-padding ion-text-center">
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">Profil</ion-title>
     </ion-toolbar>
   </ion-header>
+
+  <div id="myAvatar" class="avatar-container">
+    <ion-avatar class="profile-avatar">
+      <ion-img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZfwecZu9iiN6XUbTPqZE4vPYBic6_x1MOxU_sSgoaBQ&s=10"></ion-img>
+    </ion-avatar>
+  </div>
+
+  <ion-card id="cardProfil">
+    <ion-card-header>
+      <ion-card-title>Toko Makmur Jaya</ion-card-title>
+      <ion-card-subtitle>Kasir SIMOBILE</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      Sistem Informasi Kasir Mobile berbasis Ionic Angular.
+    </ion-card-content>
+  </ion-card>
 </ion-content>

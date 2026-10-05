@@ -13,4 +13,12 @@
       <ion-title size="large">Pengaturan</ion-title>
     </ion-toolbar>
   </ion-header>
+
+  <ion-list lines="full">
+    <ion-item>
+      <ion-icon name="moon-outline" slot="start"></ion-icon>
+      <ion-label>Mode Gelap</ion-label>
+      <ion-toggle [(ngModel)]="isDarkMode" (ionChange)="toggleDarkMode()"></ion-toggle>
+    </ion-item>
+  </ion-list>
 </ion-content>

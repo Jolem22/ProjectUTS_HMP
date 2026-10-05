@@ -51,4 +51,8 @@ export class CartService {
   clearCart() {
     this.cartItems.length = 0;
   }
+
+  removeItem(index: number) {
+    this.cartItems.splice(index, 1);
+  }
 }

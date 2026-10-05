@@ -1,0 +1,51 @@
+.avatar-container {
+  margin-top: 24px;
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-avatar {
+  width: 110px;
+  height: 110px;
+  border: 3px solid var(--ion-color-primary);
+  border-radius: 50%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+
+  ion-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+#cardProfil {
+  margin: 0 auto;
+  max-width: 480px;
+  border-radius: 12px;
+  background: var(--ion-card-background);
+  color: var(--ion-text-color);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+
+  ion-card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: var(--ion-text-color);
+  }
+
+  ion-card-subtitle {
+    font-size: 0.95rem;
+    color: var(--ion-color-primary);
+    margin-top: 4px;
+  }
+
+  ion-card-content {
+    font-size: 0.9rem;
+    color: var(--ion-text-color);
+    opacity: 0.85;
+    line-height: 1.4;
+    padding-top: 8px;
+  }
+}
