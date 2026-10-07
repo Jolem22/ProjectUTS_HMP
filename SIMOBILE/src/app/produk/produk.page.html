@@ -22,6 +22,16 @@
   <ion-searchbar [(ngModel)]="searchQuery" placeholder="Cari nama barang..."></ion-searchbar>
 
   <ion-item>
+    <ion-select [(ngModel)]="selectedCategory" placeholder="Pilih Kategori">
+      <ion-select-option value="Semua">Semua Kategori</ion-select-option>
+      <ion-select-option value="Sembako">Sembako</ion-select-option>
+      <ion-select-option value="Makanan">Makanan</ion-select-option>
+      <ion-select-option value="Minuman">Minuman</ion-select-option>
+      <ion-select-option value="Mandi">Mandi</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
     <ion-button routerLink="/form-produk">
       <ion-icon name="add-outline" slot="start"></ion-icon>
       Tambah Produk

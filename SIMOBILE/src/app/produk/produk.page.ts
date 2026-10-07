@@ -20,12 +20,13 @@ export class ProdukPage implements OnInit {
     this.produks = this.produkService.getProduks();
   }
 
+  selectedCategory: string = 'Semua';
+
   filteredProduks() {
-    if (!this.searchQuery) {
-      return this.produks;
-    }
-    return this.produks.filter((p) =>
-      p.nama.toLowerCase().includes(this.searchQuery.toLowerCase()),
-    );
+    return this.produks.filter((p) => {
+      const matchName = p.nama.toLowerCase().includes(this.searchQuery.toLowerCase());
+      const matchCat = this.selectedCategory === 'Semua' ? true : p.kategori === this.selectedCategory;
+      return matchName && matchCat;
+    });
   }
 }
