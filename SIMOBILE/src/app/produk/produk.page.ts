@@ -11,10 +11,9 @@ export class ProdukPage implements OnInit {
   produks: Produk[] = [];
   searchQuery: string = '';
 
-  // Gambar default --> belum ada gambar produk
   gambarDefault: string = 'https://ubaya.cloud/no_image.jpg';
 
-  constructor(private produkService: ProdukService) {}
+  constructor(private produkService: ProdukService) { }
 
   ngOnInit() {
     this.produks = this.produkService.getProduks();

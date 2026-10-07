@@ -115,7 +115,7 @@ export class ProdukService {
     },
   ];
 
-  constructor() {}
+  constructor() { }
 
   getProduks() {
     return this.produks;
@@ -124,7 +124,7 @@ export class ProdukService {
   getProdukById(id: string) {
     return this.produks.find((p) => p.id === id);
   }
-  private nextId: number = 11; //karena p1 - p10 sudah dipakai
+  private nextId: number = 11;
 
   tambahProduk(
     p_nama: string,

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CartService, CartItem } from '../services/cart'; // Trigger rebuild
+import { CartService, CartItem } from '../services/cart';
 import { TransaksiService, Transaksi } from '../services/transaksi';
 
 @Component({
@@ -52,18 +52,15 @@ export class CartPage implements OnInit {
       items: itemsCopy
     };
 
-    // Kurangi stok produk
     for (let item of this.cartItems) {
       item.produk.stok -= item.quantity;
       if (item.produk.stok < 0) {
-        item.produk.stok = 0; // prevent negative stock just in case
+        item.produk.stok = 0;
       }
     }
 
-    // Add to history
     this.transaksiService.addTransaksi(newTransaksi);
 
-    // Clear cart
     this.cartService.clearCart();
   }
 

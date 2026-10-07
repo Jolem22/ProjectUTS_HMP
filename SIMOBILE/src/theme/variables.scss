@@ -1,7 +1,3 @@
-// For information on how to create your own theme, please refer to:
-// https://ionicframework.com/docs/theming/
-
-// Mode Terang (default)
 :root {
     --ion-color-primary: #1e3a8a;
     --ion-color-primary-rgb: 30, 58, 138;
@@ -17,7 +13,6 @@
     --ion-card-background: #ffffff;
 }
 
-// Mode Gelap
 body.dark {
     color-scheme: dark;
 

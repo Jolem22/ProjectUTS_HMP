@@ -16,9 +16,9 @@ export class FormProdukPage implements OnInit {
   new_stok: any = null;
   new_gambar: string = '';
 
-  modeEdit: boolean = false;   
+  modeEdit: boolean = false;
   idProduk: string = '';
-  sudahCoba: boolean = false;  
+  sudahCoba: boolean = false;
 
 
   halamanProduk: string = '/produk';
@@ -111,8 +111,8 @@ export class FormProdukPage implements OnInit {
     this.sudahCoba = true;
 
     if (this.errNama() != '' || this.errKategori() != '' ||
-        this.errHargaBeli() != '' || this.errHargaJual() != '' ||
-        this.errStok() != '') {
+      this.errHargaBeli() != '' || this.errHargaJual() != '' ||
+      this.errStok() != '') {
       return;
     }
 

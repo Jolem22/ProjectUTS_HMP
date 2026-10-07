@@ -15,7 +15,7 @@ export interface Transaksi {
 export class TransaksiService {
   private riwayatTransaksi: Transaksi[] = [];
 
-  constructor(private produkService: ProdukService) { 
+  constructor(private produkService: ProdukService) {
     this.seedMockData();
   }
 
@@ -56,7 +56,15 @@ export class TransaksiService {
 
   generateNextId(): string {
     const nextNumber = this.riwayatTransaksi.length + 1;
-    return '#' + nextNumber.toString().padStart(3, '0');
+    let strNumber = nextNumber.toString();
+
+    if (nextNumber < 10) {
+      strNumber = '00' + strNumber;
+    } else if (nextNumber < 100) {
+      strNumber = '0' + strNumber;
+    }
+
+    return '#' + strNumber;
   }
 
   addTransaksi(transaksi: Transaksi) {

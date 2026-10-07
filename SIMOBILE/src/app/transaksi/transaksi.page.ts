@@ -15,11 +15,11 @@ export class TransaksiPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.riwayat = [...this.transaksiService.getRiwayat()];
+    this.riwayat = this.transaksiService.getRiwayat();
   }
 
   ionViewWillEnter() {
-    this.riwayat = [...this.transaksiService.getRiwayat()];
+    this.riwayat = this.transaksiService.getRiwayat();
   }
 
 }

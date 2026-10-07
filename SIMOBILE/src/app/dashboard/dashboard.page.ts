@@ -23,23 +23,22 @@ export class DashboardPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.transaksiList = [...this.transaksiService.getRiwayat()];
+    this.transaksiList = this.transaksiService.getRiwayat();
     this.hitungProdukTerlaris();
   }
 
   transaksiList: Transaksi[] = [];
 
   ionViewWillEnter() {
-    this.transaksiList = [...this.transaksiService.getRiwayat()];
+    this.transaksiList = this.transaksiService.getRiwayat();
     this.hitungProdukTerlaris();
   }
 
   ionViewDidEnter() {
-    this.transaksiList = [...this.transaksiService.getRiwayat()];
+    this.transaksiList = this.transaksiService.getRiwayat();
     this.hitungProdukTerlaris();
   }
 
-  // Jumlahkan penjualan tiap produk dari semua transaksi, lalu urutkan dari yang terbanyak
   hitungProdukTerlaris() {
     const hasil: ProdukTerlaris[] = [];
     const riwayat = this.transaksiService.getRiwayat();
@@ -61,6 +60,6 @@ export class DashboardPage implements OnInit {
   }
 
   rupiah(angka: number): string {
-    return 'Rp ' + angka.toLocaleString('id-ID');
+    return 'Rp ' + angka.toFixed(0);
   }
 }
