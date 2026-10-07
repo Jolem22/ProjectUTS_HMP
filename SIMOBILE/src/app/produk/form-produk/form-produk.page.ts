@@ -15,6 +15,7 @@ export class FormProdukPage implements OnInit {
   new_harga_jual: any = null;
   new_stok: any = null;
   new_gambar: string = '';
+  public alertButtons = ['OK'];
 
   modeEdit: boolean = false;
   idProduk: string = '';
@@ -122,8 +123,18 @@ export class FormProdukPage implements OnInit {
     } else {
       this.produkService.tambahProduk(this.new_nama, this.new_kategori,
         this.new_harga_beli, this.new_harga_jual, this.new_stok, this.new_gambar);
+
+        this.new_nama = '';
+        this.new_kategori = '';
+        this.new_harga_beli = null;
+        this.new_harga_jual = null;
+        this.new_stok = null;
+        this.new_gambar = '';
+        this.sudahCoba = false;
     }
 
     this.router.navigate([this.halamanProduk]);
+
+
   }
 }

@@ -75,8 +75,15 @@
 
   </ion-list>
 
-  <ion-button expand="block" (click)="simpan()">
+  <ion-button id="btnSimpan" expand="block" (click)="simpan()">
     <ion-icon name="save-outline" slot="start"></ion-icon>
     Simpan
   </ion-button>
+  <ion-alert
+    trigger="btnSimpan"
+    header="Add Product"
+    message="Data Successfully stored"
+    [buttons]="alertButtons"
+    *ngIf="sudahCoba"
+  ></ion-alert>
 </ion-content>
