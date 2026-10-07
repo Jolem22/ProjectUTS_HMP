@@ -46,7 +46,7 @@ export class CartPage implements OnInit {
     }
 
     const newTransaksi: Transaksi = {
-      id: 'TRX' + new Date().getTime(),
+      id: this.transaksiService.generateNextId(),
       tanggal: currentDate.toLocaleString(),
       total: currentTotal,
       items: itemsCopy

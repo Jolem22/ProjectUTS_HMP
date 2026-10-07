@@ -31,20 +31,20 @@
                 <ion-accordion *ngFor="let t of transaksiList" [value]="t.id">
 
                   <ion-item slot="header">
-                    <ion-label>Transaksi {{t.nomor}}</ion-label>
+                    <ion-label>Transaksi {{t.id}}</ion-label>
                   </ion-item>
 
                   <div class="ion-padding" slot="content">
                     <ion-item lines="none" *ngFor="let item of t.items">
-                      <ion-label>{{getNama(item.produkId)}}</ion-label>
-                      <ion-text slot="end">{{item.jumlah}} x {{rupiah(getHarga(item.produkId))}}</ion-text>
+                      <ion-label>{{item.produk.nama}}</ion-label>
+                      <ion-text slot="end">{{item.quantity}} x {{rupiah(item.produk.harga_jual)}}</ion-text>
                     </ion-item>
 
                     <hr>
 
                     <ion-item lines="none">
                       <ion-label>Total Transaksi:</ion-label>
-                      <ion-text slot="end"><b>{{rupiah(hitungTotal(t))}}</b></ion-text>
+                      <ion-text slot="end"><b>{{rupiah(t.total)}}</b></ion-text>
                     </ion-item>
                   </div>
 

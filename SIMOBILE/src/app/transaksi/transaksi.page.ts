@@ -8,16 +8,18 @@ import { TransaksiService, Transaksi } from '../services/transaksi';
   standalone: false,
 })
 export class TransaksiPage implements OnInit {
+  riwayat: Transaksi[] = [];
 
   constructor(
     private transaksiService: TransaksiService
   ) { }
 
   ngOnInit() {
+    this.riwayat = [...this.transaksiService.getRiwayat()];
   }
 
-  get riwayat(): Transaksi[] {
-    return this.transaksiService.getRiwayat();
+  ionViewWillEnter() {
+    this.riwayat = [...this.transaksiService.getRiwayat()];
   }
 
 }
